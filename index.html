@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Project List Demo</title>
+
+        <!-- Import Vaadin Grid -->
+        <script type="text/javascript" src="bower_components/webcomponentsjs/webcomponents-lite.min.js"></script>
+        <link rel="import" href="bower_components/vaadin-components/vaadin-grid/vaadin-grid.html" />
+
+        <!-- Import fake backend -->
+        <script type="text/javascript" src="database.min.js"></script>
+
+        <!-- Import theme and additional elements -->
+        <link rel="import" href="bower_components/progress-bubble/progress-bubble.html" />
+        <link rel="stylesheet" type="text/css" href="project-list.css" />
+
+        <script type="text/javascript">
+            document.addEventListener('WebComponentsReady', function() {
+                'use strict';
+                var grid = document.getElementById('project-list');
+
+                // Define the datasource.
+                var database = new Database(1000);
+                grid.data.source = function(request) {
+                    var totalSize = database.size();
+                    request.success(database.getData(request.index, request.count), totalSize);
+                };
+
+                // Sort the "back-end".
+                grid.addEventListener('sort', function() {
+                    var sortOrder = grid.data.sortOrder[0];
+                    var sortProperty = grid.columns[sortOrder.column].name;
+                    var sortDirection = sortOrder.direction;
+                    database.sort(sortProperty, sortDirection);
+                })
+
+                // Define renderers.
+                grid.columns[0].renderer = function(cell) {
+                    cell.element.innerHTML = '<span class="status-badge status-' + cell.data.toLowerCase() + '">' + cell.data + '</span>';
+                };
+                grid.columns[1].renderer = function(cell) {
+                    cell.element.innerHTML = '<progress-bubble stroke-width="3" stroke="#00b4f0" max="100" value="' + cell.data + '">' + cell.data + '%</progress-bubble>';
+                };
+                grid.columns[3].renderer = function(cell) {
+                    var team = cell.data;
+                    cell.element.innerHTML = team.map(function(person) {
+                        return '<img class="team" src="' + person.photo + '" />';
+                    }).join('');
+                };
+            });
+        </script>
+        <style is="x-style">
+            progress-bubble /deep/ circle {
+                transition: none !important;
+            }
+            progress-bubble /deep/ circle:first-child {
+                stroke: rgba(0, 0, 0, 0.1);
+            }
+        </style>
+    </head>
+    <body>
+        <v-grid id="project-list" theme="project-list">
+            <table>
+                <colgroup>
+                    <col name="status" sortable="true" max-width="80" header-text="Status">
+                    <col name="progress" sortable="true" max-width="50" header-text="Progress">
+                    <col name="summary" sortable="true" header-text="Summary">
+                    <col name="team" sortable="true" max-width="105" header-text="Team">
+                </colgroup>
+            </table>
+        </v-grid>
+    </body>
+</html>

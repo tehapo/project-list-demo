@@ -1,0 +1,33 @@
+{
+  "name": "vaadin-components",
+  "version": "0.2.0",
+  "authors": [
+    "Vaadin Ltd"
+  ],
+  "description": "Vaadin Grid web component",
+  "license": "Apache License 2.0",
+  "keywords": [
+    "web-components"
+  ],
+  "ignore": [
+    "**/.*",
+    "**/node_modules",
+    "**/bower_components",
+    "**/test",
+    "**/tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#v0.8.0-rc.7"
+  },
+  "homepage": "https://github.com/vaadin-bower/vaadin-components",
+  "_release": "0.2.0",
+  "_resolution": {
+    "type": "version",
+    "tag": "0.2.0",
+    "commit": "67efde394558fe701c8efc98a9c22626cffc31e4"
+  },
+  "_source": "git://github.com/vaadin-bower/vaadin-components.git",
+  "_target": "~0.2.0",
+  "_originalSource": "vaadin-components",
+  "_direct": true
+}

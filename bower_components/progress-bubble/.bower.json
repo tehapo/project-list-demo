@@ -1,0 +1,32 @@
+{
+  "name": "progress-bubble",
+  "authors": [
+    "Teemu Pöntelin"
+  ],
+  "keywords": [
+    "Polymer",
+    "web-components"
+  ],
+  "license": "Apache-2.0",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "polymer": "Polymer/polymer#^0.8.0-rc.4"
+  },
+  "homepage": "https://github.com/tehapo/progress-bubble",
+  "_release": "41163fa4e5",
+  "_resolution": {
+    "type": "branch",
+    "branch": "polymer-0.8",
+    "commit": "41163fa4e5bfe1ac7851b93879ed3829701e4bfb"
+  },
+  "_source": "git://github.com/tehapo/progress-bubble.git",
+  "_target": "polymer-0.8",
+  "_originalSource": "progress-bubble",
+  "_direct": true
+}

@@ -1,0 +1,20 @@
+{
+  "name": "project-list",
+  "version": "1.0.0",
+  "authors": [
+    "Teemu Pöntelin <teemu@vaadin.com>"
+  ],
+  "license": "Apache2",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "private": true,
+  "dependencies": {
+    "vaadin-components": "~0.2.0",
+    "progress-bubble": "polymer-0.8"
+  }
+}
