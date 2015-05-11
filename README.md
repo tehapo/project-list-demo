@@ -1,5 +1,5 @@
 Project List Demo
 =================
 
-Simple demo app to demonstrate usage of <v-grid> component with a client-side
+Simple demo app to demonstrate usage of &lt;v-grid&gt; component with a client-side
 datasource.
