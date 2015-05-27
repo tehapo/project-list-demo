@@ -48,7 +48,7 @@
                             return '<img class="team" src="' + person.photo + '" />';
                         }).join('');
                     }
-                }
+                };
                 grid.columns.forEach(function(column) {
                     if (renderers[column.name]) {
                         column.renderer = renderers[column.name];
