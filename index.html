@@ -35,18 +35,25 @@
                 })
 
                 // Define renderers.
-                grid.columns[0].renderer = function(cell) {
-                    cell.element.innerHTML = '<span class="status-badge status-' + cell.data.toLowerCase() + '">' + cell.data + '</span>';
-                };
-                grid.columns[1].renderer = function(cell) {
-                    cell.element.innerHTML = '<progress stroke-width="3" stroke="#00b4f0" max="100" value="' + cell.data + '">' + cell.data + '%</progress>';
-                };
-                grid.columns[3].renderer = function(cell) {
-                    var team = cell.data;
-                    cell.element.innerHTML = team.map(function(person) {
-                        return '<img class="team" src="' + person.photo + '" />';
-                    }).join('');
-                };
+                var renderers = {
+                    status: function(cell) {
+                        cell.element.innerHTML = '<span class="status-badge status-' + cell.data.toLowerCase() + '">' + cell.data + '</span>';
+                    },
+                    progress: function(cell) {
+                        cell.element.innerHTML = '<progress stroke-width="3" stroke="#00b4f0" max="100" value="' + cell.data + '">' + cell.data + '%</progress>';
+                    },
+                    team: function(cell) {
+                        var team = cell.data;
+                        cell.element.innerHTML = team.map(function(person) {
+                            return '<img class="team" src="' + person.photo + '" />';
+                        }).join('');
+                    }
+                }
+                grid.columns.forEach(function(column) {
+                    if (renderers[column.name]) {
+                        column.renderer = renderers[column.name];
+                    }
+                });
             });
         </script>
         <style is="x-style">
