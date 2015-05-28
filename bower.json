@@ -14,7 +14,7 @@
   ],
   "private": true,
   "dependencies": {
-    "vaadin-components": "0.3.0-rc1",
+    "vaadin-components": "0.3.0-beta1",
     "progress-bubble": "polymer-0.8"
   }
 }
