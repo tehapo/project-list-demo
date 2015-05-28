@@ -37,6 +37,16 @@ v-grid td.v-grid-cell * {
     }
     progress {
         width: 100%;
+        -webkit-appearance: none;
+
+        &::-webkit-progress-bar {
+            background: #eee;
+            border-radius: 2px;
+        }
+        &::-webkit-progress-value {
+            background: #00b4f0;
+            border-radius: 2px;
+        }
     }
     progress-bubble {
         height: 27px;
